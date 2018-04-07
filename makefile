@@ -5,13 +5,13 @@ SOURCES := $(shell echo $(./)*.cpp)
 DEPENDS = $(SOURCES:.cpp=.d)
 OBJECTS = $(SOURCES:.cpp=.o)
 OS = $(shell uname) # For Mac OS detection (by Rolando Yanez, Raymond Harris)
-PROGRAM = glutapp
+PROGRAM = Breakout
 
 #######################################################################
 
 # OPTFLAGS = -g  # for debug
 OPTFLAGS =
-CC       = g++
+CC       = g++ -std=c++11
 CFLAGS   = -w $(OPTFLAGS)
 
 ifeq ($(strip $(OS)),Darwin)
