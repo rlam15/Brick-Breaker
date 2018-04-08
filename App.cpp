@@ -3,11 +3,14 @@
 App::App(const char* label, int x, int y, int w, int h): GlutApp(label, x, y, w, h){
     // Initialize state variables
     kh = new keyboardHandler();
+    b = new Ball(0,0);
+    p = new Paddle();
 }
 
 App::~App()
 {
     delete kh;
+    delete b;
 }
 
 void App::draw() {
@@ -33,6 +36,8 @@ void App::draw() {
     glVertex2f(mx, my + 0.05f);
     
     glEnd();
+    b->draw();
+    p->draw();
     // We have been drawing everything to the back buffer
     // Swap the buffers to see the result of what we drew
     glFlush();
@@ -41,6 +46,12 @@ void App::draw() {
 
 void App::idle()
 {
+    b->move();
+    p->checkCollision(b);
+    if(kh->getHold('a'))
+        p->update('a');
+    if(kh->getHold('d'))
+        p->update('d');
     redraw();
 }
 

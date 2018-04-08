@@ -3,12 +3,17 @@
 
 #include "GlutApp.h"
 #include "keyboardHandler.h"
+#include "Ball.h"
+#include "Paddle.h"
+// #include "drawString.h"
 
 class App: public GlutApp {
     // Maintain app state here
     float mx;
     float my;
     keyboardHandler* kh;
+    Ball* b;
+    Paddle* p;
 public:
     // Constructor, to initialize state
     App(const char* label, int x, int y, int w, int h);
