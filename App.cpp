@@ -1,16 +1,16 @@
 #include "App.h"
+// #include "Game.h"
 
 App::App(const char* label, int x, int y, int w, int h): GlutApp(label, x, y, w, h){
     // Initialize state variables
     kh = new keyboardHandler();
-    b = new Ball(0,0);
-    p = new Paddle();
+    g = new Game(kh);
+    g->start();
 }
 
 App::~App()
 {
     delete kh;
-    delete b;
 }
 
 void App::draw() {
@@ -27,15 +27,7 @@ void App::draw() {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     
-    glBegin(GL_LINES);
-    glVertex2f(mx - 0.05f, my);
-    glVertex2f(mx + 0.05f, my);
-    glVertex2f(mx, my - 0.05f);
-    glVertex2f(mx, my + 0.05f);
-    glEnd();
-
-    b->draw();
-    p->draw();
+    g->draw();
     // We have been drawing everything to the back buffer
     // Swap the buffers to see the result of what we drew
     glFlush();
@@ -44,36 +36,21 @@ void App::draw() {
 
 void App::idle()
 {
-    b->move();
-    p->update();
-    p->checkCollision(b);
-    for(char c = 'a'; c<='z';c++)
-    {
-        if(kh->getHold(c))
-        p->update(c);
-        
-    }
+    g->idle();
     
     redraw();
 }
 
 void App::mouseDown(float x, float y){
-    // Update app state
-    mx = x;
-    my = y;
 }
 
 void App::mouseDrag(float x, float y){
-    // Update app state
-    mx = x;
-    my = y;
+    g->getMouseMovement(x,y);
 }
 
 void App::mouseMove(float x, float y)
 {
-    mx = x;
-    my = y;
-    p->update(x,y);
+    g->getMouseMovement(x,y);
 }
 
 void App::keyUp(unsigned char key)

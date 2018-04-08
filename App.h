@@ -5,6 +5,7 @@
 #include "keyboardHandler.h"
 #include "Ball.h"
 #include "Paddle.h"
+#include "Game.h"
 // #include "drawString.h"
 
 class App: public GlutApp {
@@ -12,8 +13,9 @@ class App: public GlutApp {
     float mx;
     float my;
     keyboardHandler* kh;
-    Ball* b;
-    Paddle* p;
+    // Ball* b;
+    // Paddle* p;
+    Game *g;
 public:
     // Constructor, to initialize state
     App(const char* label, int x, int y, int w, int h);

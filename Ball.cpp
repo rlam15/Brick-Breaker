@@ -2,12 +2,21 @@
 #include <cmath>
 #include "App.h"
 
-Ball::Ball(int x, int y)
+Ball::Ball(float x, float y)
 {
 	this->x = x;
 	this->y = y;
 	vel = .01;
-	theta = M_PI/3;
+	theta = M_PI/3;//probably change to random 1-pi
+}
+
+
+Ball::Ball(float x, float y, float vel)
+{
+	this->x = x;
+	this->y = y;
+	this->vel = vel;
+	theta= M_PI/3;
 }
 
 void Ball::move()
@@ -68,4 +77,9 @@ float Ball::getX() const
 float Ball::getY() const
 {
 	return y;
+}
+
+void Ball::setVel(float vel)
+{
+	this->vel = vel;
 }
