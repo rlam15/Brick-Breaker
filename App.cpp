@@ -27,15 +27,13 @@ void App::draw() {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     
-        glBegin(GL_LINES);
-    
+    glBegin(GL_LINES);
     glVertex2f(mx - 0.05f, my);
     glVertex2f(mx + 0.05f, my);
-    
     glVertex2f(mx, my - 0.05f);
     glVertex2f(mx, my + 0.05f);
-    
     glEnd();
+
     b->draw();
     p->draw();
     // We have been drawing everything to the back buffer
@@ -49,14 +47,13 @@ void App::idle()
     b->move();
     p->update();
     p->checkCollision(b);
-    if(kh->getHold('a'))
-        p->update('a');
-    if(kh->getHold('d'))
-        p->update('d');    
-    if(kh->getHold('w'))
-        p->update('w');
-    if(kh->getHold('s'))
-        p->update('s');
+    for(char c = 'a'; c<='z';c++)
+    {
+        if(kh->getHold(c))
+        p->update(c);
+        
+    }
+    
     redraw();
 }
 
