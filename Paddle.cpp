@@ -28,10 +28,28 @@ bool Paddle::checkCollision(Ball* b)
 }
 void Paddle::update(float x, float y)
 {
-	// if()
+	dX = x; dY = y;
 }
+
+void Paddle::update()
+{
+if(dX<=1&&dX>=-1){
+	if(dX<x+(w/2))
+		if(x>-1)
+		{
+			x-=speed;
+		}
+	if(dX>x+(w/2))
+		if(x+w<1)
+		{
+			x+=speed;
+		}
+	}
+}
+
 void Paddle::update(char c)
 {
+	dX = -2;
 	if(c == 'd' || c == 'D')
 	{
 		if(x+w<1)

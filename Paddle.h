@@ -10,6 +10,7 @@ public:
 	Paddle();
 	void draw();
 	bool checkCollision(Ball* b);
+	void update();
 	void update(float x, float y);
 	void update(char c);
 };

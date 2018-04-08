@@ -47,11 +47,16 @@ void App::draw() {
 void App::idle()
 {
     b->move();
+    p->update();
     p->checkCollision(b);
     if(kh->getHold('a'))
         p->update('a');
     if(kh->getHold('d'))
-        p->update('d');
+        p->update('d');    
+    if(kh->getHold('w'))
+        p->update('w');
+    if(kh->getHold('s'))
+        p->update('s');
     redraw();
 }
 
@@ -71,6 +76,7 @@ void App::mouseMove(float x, float y)
 {
     mx = x;
     my = y;
+    p->update(x,y);
 }
 
 void App::keyUp(unsigned char key)
