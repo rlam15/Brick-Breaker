@@ -1,5 +1,6 @@
 #include "Paddle.h"
 #include "App.h"
+#include <cmath>
 
 Paddle::Paddle()
 {
