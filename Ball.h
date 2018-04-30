@@ -1,5 +1,6 @@
 #ifndef BALL_H
 #define BALL_H
+#include "Brick.h"
 
 class Ball
 {
@@ -10,8 +11,10 @@ public:
 	void move();
 	void draw();
 	void collide(float theta,float y);
+	bool collide(Brick *b);
 	float getX() const;
 	float getY() const;
+	float getTheta() const;
 	void setVel(float vel);
 };
 

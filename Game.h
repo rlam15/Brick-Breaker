@@ -4,7 +4,7 @@
 #include "keyboardHandler.h"
 #include "Ball.h"
 #include "Paddle.h"
-// #include "Brick.h"
+#include "Brick.h"
 #include <vector>
 
 class Game
@@ -12,7 +12,9 @@ class Game
 	bool playing = 0;
 	keyboardHandler *kh;
 	std::vector<Ball*> balls;
-	// std::vector<std::vector<Brick*>> bricks;
+	std::vector<Brick*> bricks;
+	int const col = 6;
+	int const row = 12;
 	Paddle* p;
 public:
 	Game(keyboardHandler* khandle);

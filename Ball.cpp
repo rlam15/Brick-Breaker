@@ -1,5 +1,6 @@
 #include "Ball.h"
 #include <cmath>
+#include <stdio.h>
 #include "App.h"
 
 Ball::Ball(float x, float y)
@@ -7,7 +8,7 @@ Ball::Ball(float x, float y)
 	this->x = x;
 	this->y = y;
 	vel = .01;
-	theta = M_PI/3;//probably change to random 1-pi
+	theta = (M_PI/3)+static_cast<float>(rand()/static_cast<float>(RAND_MAX));//probably change to random 1-pi
 }
 
 
@@ -16,7 +17,8 @@ Ball::Ball(float x, float y, float vel)
 	this->x = x;
 	this->y = y;
 	this->vel = vel;
-	theta= M_PI/3;
+	theta= (M_PI/3)+static_cast<float>(rand()/static_cast<float>(RAND_MAX));
+	// std::cout<<theta<<std::endl;
 }
 
 void Ball::move()
@@ -64,10 +66,20 @@ void Ball::collide(float theta, float y)
 		theta = -theta;
 }
 
-// void Ball::collide(Brick* b)
-// {
-
-// }
+bool Ball::collide(Brick* b)
+{
+	float bX = b->getX();
+	float bY = b->getY();
+	float bW = b->getW();
+	float bH = b->getH();
+	if(x>=bX&&x<=bX+bW&&y<=bY&&y>=bY-bH)
+	{
+		theta = -theta;
+		// vel = -vel;
+		return 1;
+	}
+	return 0;
+}
 
 float Ball::getX() const
 {
@@ -77,6 +89,11 @@ float Ball::getX() const
 float Ball::getY() const
 {
 	return y;
+}
+
+float Ball::getTheta() const
+{
+	return theta;
 }
 
 void Ball::setVel(float vel)
