@@ -8,6 +8,7 @@ Ball::Ball(float x, float y)
 	this->x = x;
 	this->y = y;
 	vel = .01;
+	tex = new TexRect("Textures/thelegend.png", x, y, 0.05, 0.05);
 	theta = (M_PI/3)+static_cast<float>(rand()/static_cast<float>(RAND_MAX));//probably change to random 1-pi
 }
 
@@ -18,7 +19,13 @@ Ball::Ball(float x, float y, float vel)
 	this->y = y;
 	this->vel = vel;
 	theta= (M_PI/3)+static_cast<float>(rand()/static_cast<float>(RAND_MAX));
+
+	tex = new TexRect("Textures/thelegend.png", x, y, 0.05, 0.05);
 	// std::cout<<theta<<std::endl;
+}
+
+Ball::~Ball() {
+	delete tex;
 }
 
 void Ball::move()
@@ -51,6 +58,7 @@ void Ball::draw()
 	glBegin(GL_POINTS);
     glVertex2f(x, y);
     glEnd();
+	tex -> draw();
 }
 
 

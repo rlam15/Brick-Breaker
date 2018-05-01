@@ -11,6 +11,7 @@ class Paddle
 
 public:
 	Paddle();
+	~Paddle();
 	void draw();
 	bool checkCollision(Ball* b);
 	void update();

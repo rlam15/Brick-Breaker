@@ -19,6 +19,11 @@ void Paddle::draw()
  //    glEnd();
 	tex->draw();
 }
+
+Paddle::~Paddle() {
+	delete tex;
+}
+
 bool Paddle::checkCollision(Ball* b)
 {
 	float bX = b->getX(), bY = b->getY();

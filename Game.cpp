@@ -8,6 +8,7 @@ Game::Game(keyboardHandler* khandle)
 	srand(static_cast<unsigned>(time(0)));
 	kh = khandle;
 	p = new Paddle();
+	// tex = new TexRect("Textures/thelegend.png", x, y, 1, 1);
 	for(int i = 0; i<col;i++)
 	{
 		for(int j = 0; j<row;j++)

@@ -23,6 +23,7 @@ Brick::~Brick()
 {
 	delete tex;
 }
+
 void Brick::draw()
 {
 	// glBegin(GL_POLYGON);

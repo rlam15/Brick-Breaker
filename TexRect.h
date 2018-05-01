@@ -21,7 +21,7 @@ public:
     GLuint texture_id;
 
     TexRect (const char*, float, float, float, float);
-    
+ 
     void draw();
     
     bool contains(float, float);

@@ -5,9 +5,11 @@
 class Ball
 {
 	float x, y, theta, vel;
+	TexRect *tex;
 public:
 	Ball(float x, float y);
 	Ball(float x, float y, float vel);
+	~Ball();
 	void move();
 	void draw();
 	void collide(float theta,float y);
@@ -16,6 +18,8 @@ public:
 	float getY() const;
 	float getTheta() const;
 	void setVel(float vel);
+
+
 };
 
 #endif
