@@ -7,6 +7,7 @@ Brick::Brick(float x, float y, float w, float h)
 	this->w=w;
 	this->h=h;
 	hits=1;
+    tex = new TexRect("Textures/xanny1.png", x, y, w, h);
 }
 Brick::Brick(float x, float y, float w, float h, int hp)
 {
@@ -15,15 +16,22 @@ Brick::Brick(float x, float y, float w, float h, int hp)
 	this->w=w;
 	this->h=h;
 	hits=hp;
+    tex = new TexRect("Textures/xanny1.png", x, y, w, h);
+}
+
+Brick::~Brick()
+{
+	delete tex;
 }
 void Brick::draw()
 {
-	glBegin(GL_POLYGON);
-    glVertex2f(x,y);
-    glVertex2f(x,y-h);
-    glVertex2f(x+w,y-h);
-    glVertex2f(x+w,y);
-    glEnd();
+	// glBegin(GL_POLYGON);
+ //    glVertex2f(x,y);
+ //    glVertex2f(x,y-h);
+ //    glVertex2f(x+w,y-h);
+ //    glVertex2f(x+w,y);
+ //    glEnd();
+	tex->draw();
 }
 int Brick::inside(float i, float j)//outisde = 0, top/bottom = 1, l/r = 2
 {

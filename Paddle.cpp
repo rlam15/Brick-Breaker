@@ -6,15 +6,18 @@ Paddle::Paddle()
 {
 	x = -.3; y = -.9; w = .6; h = .2, speed = .01;
 	dX = 0; dY = 0;
+    tex = new TexRect("Textures/thelegend.png", x, y, w, h);
 }
+
 void Paddle::draw()
 {
-	glBegin(GL_POLYGON);
-    glVertex2f(x,y);
-    glVertex2f(x,y-h);
-    glVertex2f(x+w,y-h);
-    glVertex2f(x+w,y);
-    glEnd();
+	// glBegin(GL_POLYGON);
+ //    glVertex2f(x,y);
+ //    glVertex2f(x,y-h);
+ //    glVertex2f(x+w,y-h);
+ //    glVertex2f(x+w,y);
+ //    glEnd();
+	tex->draw();
 }
 bool Paddle::checkCollision(Ball* b)
 {
@@ -46,6 +49,7 @@ if(dX<=1&&dX>=-1){
 			x+=speed;
 		}
 	}
+	tex->idle(x,y);
 }
 
 void Paddle::update(char c)

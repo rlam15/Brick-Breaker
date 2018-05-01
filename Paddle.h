@@ -2,10 +2,13 @@
 #define PADDLE_H
 // #include "App.h"
 #include "Ball.h"
+#include "TexRect.h"
 
 class Paddle
 {
 	float x, y, w, h, dX, dY, speed;
+	TexRect *tex;
+
 public:
 	Paddle();
 	void draw();

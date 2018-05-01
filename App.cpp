@@ -20,8 +20,6 @@ void App::draw() {
     
     // Set background color to black
     glClearColor(0.0, 0.0, 0.0, 1.0);
-    
-
 
     // Set up the transformations stack
     glMatrixMode(GL_MODELVIEW);
