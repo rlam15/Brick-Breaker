@@ -6,7 +6,7 @@ Paddle::Paddle()
 {
 	x = -.3; y = -.9; w = .6; h = .2, speed = .01;
 	dX = 0; dY = 0;
-    tex = new TexRect("Textures/thelegend.png", x, y, w, h);
+    tex = new TexRect("Textures/theLegend.png", x, y, w, h);
 }
 
 void Paddle::draw()

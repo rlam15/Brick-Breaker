@@ -8,7 +8,7 @@ Ball::Ball(float x, float y)
 	this->x = x;
 	this->y = y;
 	vel = .01;
-	tex = new TexRect("Textures/thelegend.png", x, y, 0.05, 0.05);
+	tex = new TexRect("Textures/jesus.png", x-0.015, y+0.015, 0.03, 0.03);
 	theta = (M_PI/3)+static_cast<float>(rand()/static_cast<float>(RAND_MAX));//probably change to random 1-pi
 }
 
@@ -20,7 +20,7 @@ Ball::Ball(float x, float y, float vel)
 	this->vel = vel;
 	theta= (M_PI/3)+static_cast<float>(rand()/static_cast<float>(RAND_MAX));
 
-	tex = new TexRect("Textures/thelegend.png", x, y, 0.05, 0.05);
+	tex = new TexRect("Textures/jesus.png", x-0.015, y+0.015, 0.03, 0.03);
 	// std::cout<<theta<<std::endl;
 }
 
@@ -51,13 +51,14 @@ void Ball::move()
 		// else
 		// 	y=-1;
 	}
+	tex->idle(x-.015,y+.015);
 }
 
 void Ball::draw()
 {
-	glBegin(GL_POINTS);
-    glVertex2f(x, y);
-    glEnd();
+	// glBegin(GL_POINTS);
+ //    glVertex2f(x, y);
+ //    glEnd();
 	tex -> draw();
 }
 

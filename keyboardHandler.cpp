@@ -1,4 +1,7 @@
 #include "keyboardHandler.h"
+//Written by Zach Light
+//Holds a map of keys that have been pressed but not released
+//Used to determine if a key is being held, allowing for smooth hold movement
 
 keyboardHandler::keyboardHandler()
 {
