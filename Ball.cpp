@@ -8,7 +8,7 @@ Ball::Ball(float x, float y)
 	this->x = x;
 	this->y = y;
 	vel = .01;
-	tex = new TexRect("Textures/jesus.png", x-0.015, y+0.015, 0.03, 0.03);
+	tex = new TexRect("Textures/jesus.png", x-0.025, y+0.025, 0.05, 0.05);
 	theta = (M_PI/3)+static_cast<float>(rand()/static_cast<float>(RAND_MAX));//probably change to random 1-pi
 }
 
@@ -20,7 +20,7 @@ Ball::Ball(float x, float y, float vel)
 	this->vel = vel;
 	theta= (M_PI/3)+static_cast<float>(rand()/static_cast<float>(RAND_MAX));
 
-	tex = new TexRect("Textures/jesus.png", x-0.015, y+0.015, 0.03, 0.03);
+	tex = new TexRect("Textures/jesus.png", x-0.025, y+0.025, 0.05, 0.05);
 	// std::cout<<theta<<std::endl;
 }
 
@@ -51,7 +51,7 @@ void Ball::move()
 		// else
 		// 	y=-1;
 	}
-	tex->idle(x-.015,y+.015);
+	tex->idle(x-.025,y+.025);
 }
 
 void Ball::draw()
@@ -70,6 +70,7 @@ void Ball::collide(float theta, float y)
 		this->theta = theta;
 		vel = fabs(vel);
 		this->y = y;
+		vel = fabs((theta-(M_PI/2)))/100+.01;
 	}
 	else
 		theta = -theta;
@@ -83,6 +84,8 @@ bool Ball::collide(Brick* b)
 	float bH = b->getH();
 	if(x>=bX&&x<=bX+bW&&y<=bY&&y>=bY-bH)
 	{
+		if((bX+(bW/10)>x||bX+bW-(bW/10)<x)&&(y>bY-bH+(bH/10))&&y<bY-(bH/10))
+			vel=-vel;
 		theta = -theta;
 		// vel = -vel;
 		return 1;
