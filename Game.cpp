@@ -18,6 +18,8 @@ Game::Game(keyboardHandler* khandle)
 			bricks.push_back(new Brick((i*xFac)-1,j*yFac,xFac,yFac, (j/3)+1));
 		}
 	}
+    winT = new TexRect("Textures/win.png", -1,.66,2,1);
+    lose = new TexRect("Textures/lose.png", -1,.66,2,1);
 
 }
 
@@ -32,10 +34,14 @@ Game::~Game()
 
 void Game::draw()
 {
-	for(Ball* b: balls)
-		b->draw();
+	if(won)
+		winT->draw();
+	if(lives<=0)
+		lose->draw();
 	p->draw();
 	for(Brick* b: bricks)
+		b->draw();
+	for(Ball* b: balls)
 		b->draw();
 }
 
@@ -92,6 +98,8 @@ void Game::idle()
     				delete bricks[i];
     				bricks.erase(bricks.begin()+i);
     			}
+    			if(i<bricks.size())
+    				bricks[i]->loadTex();
     			if(bricks.size()==0)
     				win();
     		}
@@ -117,7 +125,7 @@ void Game::getMouseMovement(float x, float y)
 	for(Ball* b:balls)
 	{
 
-		// b->cheatXY(x,y); //uncomment this line to move balls to cursor position
+		b->cheatXY(x,y); //uncomment this line  to move balls to cursor position
 	}
 }
 

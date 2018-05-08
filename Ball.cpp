@@ -8,7 +8,7 @@ Ball::Ball(float x, float y)
 	this->x = x;
 	this->y = y;
 	vel = .01;
-	tex = new TexRect("Textures/jesus.png", x-0.025, y+0.025, 0.05, 0.05);
+	tex = new TexRect("Textures/ball.png", x-0.025, y+0.025, 0.05, 0.05);
 	theta = (M_PI/3)+static_cast<float>(rand()/static_cast<float>(RAND_MAX));//probably change to random 1-pi
 }
 
@@ -20,7 +20,7 @@ Ball::Ball(float x, float y, float vel)
 	this->vel = vel;
 	theta= (M_PI/3)+static_cast<float>(rand()/static_cast<float>(RAND_MAX));
 
-	tex = new TexRect("Textures/jesus.png", x-0.025, y+0.025, 0.05, 0.05);
+	tex = new TexRect("Textures/ball.png", x-0.025, y+0.025, 0.05, 0.05);
 	// std::cout<<theta<<std::endl;
 }
 

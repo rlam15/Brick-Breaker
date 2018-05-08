@@ -19,6 +19,8 @@ class Game
 	int const col = 6;
 	int const row = 12;
 	Paddle* p;
+	TexRect *winT;
+	TexRect *lose;
 public:
 	Game(keyboardHandler* khandle);
 	~Game();//this should not delete the handler pointer, as this is handled by the App, which shares the pointer

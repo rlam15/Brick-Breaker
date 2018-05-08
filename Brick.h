@@ -19,6 +19,7 @@ public:
 	float getW() const;
 	float getH() const;
 	bool hit();
+	void loadTex();
 
 };
 

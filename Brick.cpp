@@ -7,7 +7,8 @@ Brick::Brick(float x, float y, float w, float h)
 	this->w=w;
 	this->h=h;
 	hits=1;
-    tex = new TexRect("Textures/xanny1.png", x, y, w, h);
+    tex = new TexRect("gay", x, y, w, h);
+	loadTex();
 }
 Brick::Brick(float x, float y, float w, float h, int hp)
 {
@@ -16,7 +17,8 @@ Brick::Brick(float x, float y, float w, float h, int hp)
 	this->w=w;
 	this->h=h;
 	hits=hp;
-    tex = new TexRect("Textures/xanny1.png", x, y, w, h);
+    tex = new TexRect("fake", x, y, w, h);
+	loadTex();
 }
 
 Brick::~Brick()
@@ -66,4 +68,31 @@ bool Brick::hit()
 {
 	hits--;
 	return hits<=0;
+}
+
+void Brick::loadTex() 
+{
+	if(tex==NULL)
+		return;
+
+	delete tex;
+	switch(hits)  
+	{		
+		case 2:
+    	tex = new TexRect("Textures/blueSupreme.png", x, y, w, h);
+		break;
+		case 3:
+    	tex = new TexRect("Textures/yellowSupreme.png", x, y, w, h);
+		break;
+		case 4:
+	    tex = new TexRect("Textures/tealSupreme.png", x, y, w, h);
+		break;
+		case 5:
+    	tex = new TexRect("Textures/greenSupreme.png", x, y, w, h);
+		break;
+
+		default:
+    	tex = new TexRect("Textures/redSupreme.png", x, y, w, h);
+		break;
+	}
 }

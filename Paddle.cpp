@@ -4,9 +4,9 @@
 
 Paddle::Paddle()
 {
-	x = -.3; y = -.9; w = .6; h = .2, speed = .01;
+	x = -.2; y = -.9; w = .6; h = .10, speed = .01;
 	dX = 0; dY = 0;
-    tex = new TexRect("Textures/theLegend.png", x, y, w, h);
+    tex = new TexRect("Textures/platform.png", x, y, w, h);
 }
 
 void Paddle::draw()
