@@ -5,6 +5,7 @@
 Game::Game(keyboardHandler* khandle)
 {
 	//this line creates a new seed for all uses of rand()
+	background = new TexRect("Textures/background.png", -1,1,2,2.5);
 	srand(static_cast<unsigned>(time(0)));
 	kh = khandle;
 	p = new Paddle();
@@ -20,6 +21,7 @@ Game::Game(keyboardHandler* khandle)
 	}
     winT = new TexRect("Textures/win.png", -1,.66,2,1);
     lose = new TexRect("Textures/lose.png", -1,.66,2,1);
+    
 
 }
 
@@ -43,6 +45,7 @@ void Game::draw()
 		b->draw();
 	for(Ball* b: balls)
 		b->draw();
+	background->draw();
 }
 
 void Game::start()
@@ -116,6 +119,10 @@ void Game::idle()
     if(kh->getHold('r')&&(lives==0||won))
     {
     	restart();
+    }
+    if (highScore < score) 
+    {
+    	highScore = score;
     }
 }
 

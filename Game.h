@@ -2,6 +2,7 @@
 #define GAME_H
 // #include "App.h"
 #include "keyboardHandler.h"
+#include "displayData.h"
 #include "Ball.h"
 #include "Paddle.h"
 #include "Brick.h"
@@ -13,14 +14,19 @@ class Game
 	bool won = 0;
 	int score = 0;
 	int lives = 3;
+	int highScore = 0;
 	keyboardHandler *kh;
 	std::vector<Ball*> balls;
 	std::vector<Brick*> bricks;
 	int const col = 6;
 	int const row = 12;
 	Paddle* p;
+	TexRect *background;
 	TexRect *winT;
 	TexRect *lose;
+	//need to implement these
+	displayData *livesDisplay;
+	displayData *highScoreDisplay;
 public:
 	Game(keyboardHandler* khandle);
 	~Game();//this should not delete the handler pointer, as this is handled by the App, which shares the pointer
