@@ -18,6 +18,7 @@ public:
 	float getY() const;
 	float getW() const;
 	float getH() const;
+	bool hit();
 
 };
 

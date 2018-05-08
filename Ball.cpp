@@ -112,3 +112,9 @@ void Ball::setVel(float vel)
 {
 	this->vel = vel;
 }
+
+
+void Ball::cheatXY(float x, float y)
+{
+	this->x = x; this->y = y;
+}

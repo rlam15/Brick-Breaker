@@ -18,6 +18,7 @@ public:
 	float getY() const;
 	float getTheta() const;
 	void setVel(float vel);
+	void cheatXY(float x, float y);
 
 
 };

@@ -61,3 +61,9 @@ float Brick::getH() const
 {
 	return h;
 }
+
+bool Brick::hit()
+{
+	hits--;
+	return hits<=0;
+}

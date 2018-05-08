@@ -10,6 +10,9 @@
 class Game
 {
 	bool playing = 0;
+	bool won = 0;
+	int score = 0;
+	int lives = 3;
 	keyboardHandler *kh;
 	std::vector<Ball*> balls;
 	std::vector<Brick*> bricks;
@@ -23,6 +26,10 @@ public:
 	void draw();
 	void idle();
 	void getMouseMovement(float x, float y);
+	void newLife();
+	void lostGame();
+	void restart();
+	void win();
 };
 
 
