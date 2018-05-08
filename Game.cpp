@@ -21,6 +21,9 @@ Game::Game(keyboardHandler* khandle)
 	}
     winT = new TexRect("Textures/win.png", -1,.66,2,1);
     lose = new TexRect("Textures/lose.png", -1,.66,2,1);
+    scoreT = new TexRect("Textures/currentHighScore.png", 0.2,1,.4,.08);
+    highScoreDisplay = new displayData(.6,1.,.4,.08);
+    scoreDisplay = new displayData(-.6,1.,.4,.08);
     
 
 }
@@ -45,7 +48,11 @@ void Game::draw()
 		b->draw();
 	for(Ball* b: balls)
 		b->draw();
-	background->draw();
+
+	highScoreDisplay->draw();
+	scoreDisplay->draw();	
+	scoreT->draw();	
+	// background->draw();
 }
 
 void Game::start()
@@ -123,7 +130,9 @@ void Game::idle()
     if (highScore < score) 
     {
     	highScore = score;
+    	highScoreDisplay->setData(highScore);
     }
+    scoreDisplay->setData(score);
 }
 
 void Game::getMouseMovement(float x, float y)
@@ -131,8 +140,8 @@ void Game::getMouseMovement(float x, float y)
 	p->update(x,y);
 	for(Ball* b:balls)
 	{
-
-		b->cheatXY(x,y); //uncomment this line  to move balls to cursor position
+		if(kh->getHold('p'))
+			b->cheatXY(x,y); //uncomment this line  to move balls to cursor position
 	}
 }
 

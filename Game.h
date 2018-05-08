@@ -23,10 +23,11 @@ class Game
 	Paddle* p;
 	TexRect *background;
 	TexRect *winT;
+	TexRect *scoreT;
 	TexRect *lose;
 	//need to implement these
-	displayData *livesDisplay;
 	displayData *highScoreDisplay;
+	displayData *scoreDisplay;
 public:
 	Game(keyboardHandler* khandle);
 	~Game();//this should not delete the handler pointer, as this is handled by the App, which shares the pointer

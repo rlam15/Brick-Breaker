@@ -20,10 +20,12 @@
     	float w;
     	float h;
     	GLuint texture_id;
+    	int data;
 
-		displayData(const char*, float, float, float, float);
+		displayData(float, float, float, float);
 
 		void draw();
+		void setData(int);
 		
 	};
 
