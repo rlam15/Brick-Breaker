@@ -80,8 +80,10 @@ void Game::idle()
 			balls[0]->setVel(.01);
 	}
     p->update();
+    int i = -1;
 	for(Ball* b : balls)
 	{
+		i++;
 		b->move();
 		if(b->getY()<-1)
 		{
@@ -103,6 +105,7 @@ void Game::idle()
 			else if(balls.size()>1)
 			{
 				delete b;
+				balls.erase(balls.begin()+i);
 				break;
 			}
 		}
@@ -117,6 +120,12 @@ void Game::idle()
     			{
     				delete bricks[i];
     				bricks.erase(bricks.begin()+i);
+    				int temp = kh->getHold('o') ? 0 : 90;
+    				if(rand()%100>temp)
+    				{
+    					if(balls.size()<4)
+    						balls.push_back(new Ball(b->getX(),b->getY(), .01));
+    				}
     			}
     			if(i<bricks.size())
     				bricks[i]->loadTex();
@@ -133,7 +142,7 @@ void Game::idle()
         }
         
     }
-    if(kh->getHold('r')&&(lives==0||won))
+    if(kh->getHold('r')/*&&(lives==0||won)*/)
     {
     	restart();
     }
@@ -153,7 +162,7 @@ void Game::idle()
 
 		p->changeSize(-.03);
     }
-    if(kh->getHold('1'))
+    	if(kh->getHold('1'))
 	{
 
 		mode = 1;
@@ -256,5 +265,7 @@ void Game::win()
 	won = 1;
 		if(lives==3)
 			score+=20;
+		if(balls.size()>1)
+			score+=5*balls.size()-5;
 		// std::cout<<sco"re<<std::endl;
 }

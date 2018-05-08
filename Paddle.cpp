@@ -78,7 +78,10 @@ void Paddle::update(char c)
 
 float Paddle::changeSize(float inc)
 {
-	w +=inc;
-	tex->setW(w);
+	if(w+inc>.01&&w+inc<1.99)
+	{
+		w +=inc;
+		tex->setW(w);
+	}
 	return w;
 }
