@@ -211,7 +211,7 @@ void Game::restart()
 void Game::win()
 {
 	won = 1;
-	if(lives==3)
-		score+=20;
-	// std::cout<<score<<std::endl;
+		if(lives==3)
+			score+=20;
+		// std::cout<<sco"re<<std::endl;
 }
