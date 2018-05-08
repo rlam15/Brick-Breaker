@@ -43,7 +43,7 @@ Game::~Game()
 
 void Game::draw()
 {
-	if(lives<=0)
+	if(lives<=0&&!won)
 		lose->draw();
 
 
@@ -195,7 +195,8 @@ void Game::newLife()
 		delete b;
 	balls.clear();
 	balls.push_back(new Ball(0,-.8, 0));
-	score -= 30;
+	if(!won)
+		score -= 30;
 	if(score<0)
 		score=0;
 	playing = 0;

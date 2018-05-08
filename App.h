@@ -13,6 +13,7 @@ class App: public GlutApp {
     float mx;
     float my;
     keyboardHandler* kh;
+    bool pause = 0;
     // Ball* b;
     // Paddle* p;
     Game *g;

@@ -34,7 +34,8 @@ void App::draw() {
 
 void App::idle()
 {
-    g->idle();
+    if(!pause)
+        g->idle();  
     
     redraw();
 }
@@ -43,11 +44,13 @@ void App::mouseDown(float x, float y){
 }
 
 void App::mouseDrag(float x, float y){
+    if(!pause)
     g->getMouseMovement(x,y);
 }
 
 void App::mouseMove(float x, float y)
 {
+    if(!pause)
     g->getMouseMovement(x,y);
 }
 
@@ -61,6 +64,8 @@ void App::keyPress(unsigned char key) {
         // Exit the app when Esc key is pressed
         exit(0);
     }
+    if(key=='m')
+        pause = !pause;
     kh->keyDown(key);
 
 }
