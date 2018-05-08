@@ -27,6 +27,7 @@ class Game
 	TexRect *scoreTex;
 	TexRect *lose;
 	std::vector<TexRect*> liveT;
+	int mode = 0;
 	//need to implement these
 	displayData *highScoreDisplay;
 	displayData *scoreDisplay;

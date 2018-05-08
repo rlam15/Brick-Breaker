@@ -153,6 +153,20 @@ void Game::idle()
 
 		p->changeSize(-.03);
     }
+    if(kh->getHold('1'))
+	{
+
+		mode = 1;
+	}
+	if(kh->getHold('2'))
+	{
+
+		mode = 2;
+	}
+	if(kh->getHold('3'))
+	{
+		mode = 3;
+	}
     scoreDisplay->setData(score);
 }
 
@@ -191,15 +205,44 @@ void Game::restart()
 	for(Brick* b : bricks)
 		delete b;
 	bricks.clear();
-	for(int i = 0; i<col;i++)
+	if(mode==2)
 	{
-		for(int j = 0; j<row;j++)
+		for(int i = 0; i<col;i++)
 		{
-			float xFac = 2./col;
-			float yFac = 1./row;
-			bricks.push_back(new Brick((i*xFac)-1,j*yFac,xFac,yFac, (j/3)+1));
+			for(int j = 0; j<row;j++)
+			{
+				float xFac = 2./col;
+				float yFac = 1./row;
+				bricks.push_back(new Brick((i*xFac)-1,j*yFac,xFac,yFac));
+			}
 		}
+		// if(lives==0)
+		// 	p->changeSize(.05);
 	}
+	else if(mode==3)
+	{
+		for(int i = 0; i<col;i++)
+		{
+			for(int j = 0; j<row;j++)
+			{
+				float xFac = 2./col;
+				float yFac = 1./row;
+				bricks.push_back(new Brick((i*xFac)-1,j*yFac,xFac,yFac, rand()%5));
+			}
+		}
+		// if(lives==0)
+		// 	p->changeSize(.05);
+	}
+	else
+		for(int i = 0; i<col;i++)
+		{
+			for(int j = 0; j<row;j++)
+			{
+				float xFac = 2./col;
+				float yFac = 1./row;
+				bricks.push_back(new Brick((i*xFac)-1,j*yFac,xFac,yFac, (j/3)+1));
+			}
+		}
 
     lives = 3;
     won = 0;
