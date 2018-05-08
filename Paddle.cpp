@@ -75,3 +75,10 @@ void Paddle::update(char c)
 		}
 	}
 }
+
+float Paddle::changeSize(float inc)
+{
+	w +=inc;
+	tex->setW(w);
+	return w;
+}

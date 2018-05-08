@@ -31,6 +31,7 @@ public:
     void moveLeft(float rate=0.01);
     void moveRight(float rate=0.01);
     void idle(float x, float y);
+    void setW(float);
     
     void jump();
     

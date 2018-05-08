@@ -17,6 +17,7 @@ public:
 	void update();
 	void update(float x, float y);
 	void update(char c);
+	float changeSize(float inc);
 };
 
 #endif

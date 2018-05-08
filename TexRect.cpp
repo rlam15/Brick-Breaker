@@ -125,5 +125,10 @@ void TexRect::idle(float x, float y)
     this->y = y;
 }
 
+void TexRect::setW(float w)
+{
+    this->w = w;
+}
+
 
 

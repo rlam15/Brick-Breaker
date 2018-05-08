@@ -24,7 +24,9 @@ class Game
 	TexRect *background;
 	TexRect *winT;
 	TexRect *scoreT;
+	TexRect *scoreTex;
 	TexRect *lose;
+	std::vector<TexRect*> liveT;
 	//need to implement these
 	displayData *highScoreDisplay;
 	displayData *scoreDisplay;

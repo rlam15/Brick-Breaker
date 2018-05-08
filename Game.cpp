@@ -22,8 +22,12 @@ Game::Game(keyboardHandler* khandle)
     winT = new TexRect("Textures/win.png", -1,.66,2,1);
     lose = new TexRect("Textures/lose.png", -1,.66,2,1);
     scoreT = new TexRect("Textures/currentHighScore.png", 0.2,1,.4,.08);
+    scoreTex = new TexRect("Textures/score.png", -1,1,.4,.08);
     highScoreDisplay = new displayData(.6,1.,.4,.08);
     scoreDisplay = new displayData(-.6,1.,.4,.08);
+    liveT.push_back(new TexRect("Textures/ball.png", -.11, .98, 0.05, 0.05));
+    liveT.push_back(new TexRect("Textures/ball.png",-.01, .98, 0.05, 0.05));
+    liveT.push_back(new TexRect("Textures/ball.png", .09, .98, 0.05, 0.05));
     
 
 }
@@ -39,19 +43,25 @@ Game::~Game()
 
 void Game::draw()
 {
-	if(won)
-		winT->draw();
 	if(lives<=0)
 		lose->draw();
+
+
 	p->draw();
 	for(Brick* b: bricks)
 		b->draw();
 	for(Ball* b: balls)
 		b->draw();
+	for(int i = 1; i<=lives;i++)
+		liveT[i-1]->draw();
+
+	if(won)
+		winT->draw();
 
 	highScoreDisplay->draw();
 	scoreDisplay->draw();	
 	scoreT->draw();	
+	scoreTex->draw();
 	// background->draw();
 }
 
@@ -132,6 +142,17 @@ void Game::idle()
     	highScore = score;
     	highScoreDisplay->setData(highScore);
     }
+    if(kh->getHold('='))
+    {
+
+		p->changeSize(.03);
+    }
+
+    if(kh->getHold('-'))
+    {
+
+		p->changeSize(-.03);
+    }
     scoreDisplay->setData(score);
 }
 
@@ -152,6 +173,8 @@ void Game::newLife()
 	balls.clear();
 	balls.push_back(new Ball(0,-.8, 0));
 	score -= 30;
+	if(score<0)
+		score=0;
 	playing = 0;
 }
 
@@ -181,11 +204,14 @@ void Game::restart()
     lives = 3;
     won = 0;
     score = 0;
+    scoreDisplay->setData(score);
     newLife();
 }
 
 void Game::win()
 {
 	won = 1;
-	std::cout<<score<<std::endl;
+	if(lives==3)
+		score+=20;
+	// std::cout<<score<<std::endl;
 }
