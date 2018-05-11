@@ -1,6 +1,6 @@
 #include "displayData.h"
 
-displayData::displayData(float x=0, float y=0, float w=0.5, float h=0.5) 
+displayData::displayData(float x, float y, float w, float h) 
 {
 
 	glClearColor (0.0, 0.0, 0.0, 0.0);
